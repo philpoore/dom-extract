@@ -1,0 +1,30 @@
+{
+  "name": "dom-extract",
+  "version": "0.0.3",
+  "description": "Extract HTML from file by DOM Selector",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "dom-extract": "./bin/dom-extract"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/philpoore/dom-extract"
+  },
+  "keywords": [
+    "dom",
+    "html"
+  ],
+  "author": "philpoore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philpoore/dom-extract/issues"
+  },
+  "homepage": "https://github.com/philpoore/dom-extract",
+  "dependencies": {
+    "cheerio": "^0.17.0",
+    "colors": "^0.6.2"
+  }
+}
