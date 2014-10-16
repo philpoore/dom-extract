@@ -22,3 +22,17 @@ Use with `find` and `xargs` to get all `title` tags, out of `*.html` files.
 ```
 find . -name "*.html" | xargs -L 1 dom-extract 'title'
 ```
+
+Pipe in `STDIN` instead of using filename
+```
+cat index.html | dom-extract 'title'
+```
+
+
+#### Version History
+
+##### v0.0.5 - Current
++ Allow pipe from STDIN
+
+#### Who
+Phil Poore made this :P

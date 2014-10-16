@@ -1,6 +1,6 @@
 {
   "name": "dom-extract",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Extract HTML from file by DOM Selector",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/philpoore/dom-extract",
   "dependencies": {
     "cheerio": "^0.17.0",
-    "colors": "^0.6.2"
+    "colors": "^0.6.2",
+    "readtoend": "0.0.1"
   }
 }
