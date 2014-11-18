@@ -1,10 +1,10 @@
 ### Dom Extract
-Filter HTML from file by Css Selector.
+Filter HTML by CSS Selector.
 
 
 #### Install
 ```
-npm install git+https://git@github.com/philpoore/dom-extract.git -g
+npm install dom-extract -g
 ```
 
 #### Usage
@@ -23,7 +23,7 @@ Use with `find` and `xargs` to get all `title` tags, out of `*.html` files.
 find . -name "*.html" | xargs -L 1 dom-extract 'title'
 ```
 
-Pipe in `STDIN` instead of using filename
+Pipe HTML from direct `STDIN`
 ```
 cat index.html | dom-extract 'title'
 ```
@@ -39,12 +39,15 @@ curl -sk https://twitter.com/philpoore | dom-extract ".ProfileNav-item--follower
 + Allow pipe from STDIN
 
 ##### v0.0.6
-Bump
+Bump Version
 
 ##### v0.0.7
-Dump
+Bump Version
 
-##### v0.0.8 - Current
+##### v0.0.8
+Bump Version
+
+##### v0.0.9 - Current
 + Added support for using as libary
 + Extended the cli to include showing innerHTML
 + Added Testing
