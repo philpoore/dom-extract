@@ -1,6 +1,6 @@
 {
   "name": "dom-extract",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Extract HTML from file by DOM Selector",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,11 @@
   },
   "keywords": [
     "dom",
-    "html"
+    "html",
+    "nodejs",
+    "scraper",
+    "cheerio",
+    "jquery"
   ],
   "author": "philpoore",
   "license": "ISC",
