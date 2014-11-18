@@ -1,3 +1,41 @@
 #!/usr/bin/env node
+//
+// Dom Extract
+// philpoore - http://byte22.com - phil@byte22.com
+//
+// Extract HTML by css selector from FILE or STDIN
+//
+// Useage:
+//   dom-extract $selector [$file]
+//
+//	$selector 	- html css selector to extract
+//  $file		- file to read [optional]
+//
+//	If $file is ommited, then html is read from STDIN
+//
+// Examples:
+//
+//   dom-extract p file.html					: extract all 'p' tags from 'file.html'
+//   find *.html | xargs -L 1 dom-extract a		: extract all 'a' tags from '*.html' files
+//   cat file.html | dom-extract img			: extract 'img' tags from 'file.html'
+//
+//
+//	dom-extract : Extact elements from HTML by css selectors
+//
+//	Useage:
+//
+//		dom-extract '$selector' '$filename' [opts]
+//
+//			if no $filename is given, it will use STDIN
+//
+//	Opts:
+//		--html		return outerHTML of elements (default)
+//		--text		return innerText of elements
+//
 
-require('../index.js')
+var argv = require('minimist')(process.argv.slice(2));
+console.log(argv);
+var dome = require('../index.js')({
+	selector: argv._[0],
+	text: argv.text
+}).run();

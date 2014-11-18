@@ -1,10 +1,10 @@
 {
   "name": "dom-extract",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Extract HTML from file by DOM Selector",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node test/jasmine/spec"
   },
   "bin": {
     "dom-extract": "./bin/dom-extract"
@@ -25,7 +25,10 @@
   "homepage": "https://github.com/philpoore/dom-extract",
   "dependencies": {
     "cheerio": "^0.17.0",
-    "colors": "^0.6.2",
+    "minimist": "^1.1.0",
     "readtoend": "0.0.1"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }
