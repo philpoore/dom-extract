@@ -2,6 +2,7 @@ var fs = require('fs');
 var cheerio = require('cheerio');
 var readtoend = require('readtoend');
 
+
 var DomExtract = module.exports = function (opts){
 	
 	var text, selector, filename;
