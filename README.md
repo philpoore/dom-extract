@@ -47,11 +47,14 @@ Bump Version
 ##### v0.0.8
 Bump Version
 
-##### v0.0.9 - Current
+##### v0.0.9
 + Added support for using as libary
 + Extended the cli to include showing innerHTML
 + Added Testing
 + Update README.md
+
+##### v1.0.0 - Current
++ Added support for --attr option
 
 #### Who
 Phil Poore made this :P
