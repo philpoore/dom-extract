@@ -37,5 +37,6 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var dome = require('../index.js')({
 	selector: argv._[0],
-	text: argv.text
+	text: argv.text,
+	attr: argv.attr
 }).run();

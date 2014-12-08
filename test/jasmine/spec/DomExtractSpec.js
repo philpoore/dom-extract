@@ -84,4 +84,37 @@ describe("DomExtract", function() {
 		expect(results[0]).toBe('hello1');
 		expect(results[1]).toBe('hello2');
 	});
+
+	it('should return "classa" for "<p class="classa">hello1</p>" input when using attr="class"', function (){
+		var results = dom_extract({
+			selector: 'p',
+			attr: 'class'
+		}).process('<p class="classa">hello1</p>');
+		expect(results[0]).toBe('classa');
+	});
+
+	it('should return "classa" for "<p id="ida">hello1</p>" input when using attr="id"', function (){
+		var results = dom_extract({
+			selector: 'p',
+			attr: 'id'
+		}).process('<p id="ida">hello1</p>');
+		expect(results[0]).toBe('ida');
+	});
+
+	it('should return undefined for "<p class="classa">hello1</p>" input when using attr="id"', function (){
+		var results = dom_extract({
+			selector: 'p',
+			attr: 'id'
+		}).process('<p class="classa">hello1</p>');
+		expect(results[0]).toBe(undefined);
+	});
+
+	it('should return "classa","classb" for "<p class="classa">hello1</p><p class="classb">hello1</p>" input when using attr="class"', function (){
+		var results = dom_extract({
+			selector: 'p',
+			attr: 'class'
+		}).process('<p class="classa">hello1</p><p class="classb">hello1</p>');
+		expect(results[0]).toBe('classa');
+		expect(results[1]).toBe('classb');
+	});
 });

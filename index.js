@@ -11,6 +11,7 @@ var DomExtract = module.exports = function (opts){
 	// can be used to re-init
 	var init = function (opts){
 		text = opts.text || false;
+		attr = opts.attr || false;
 		selector = opts.selector;
 		filename = opts.filename;
 
@@ -28,8 +29,17 @@ var DomExtract = module.exports = function (opts){
 		var $ = cheerio.load(data);
 
 		$(selector).each(function (i, el){
-			var line = text ? $(el).text() : $.html(el);
-			results.push(line);
+			var result;
+			
+			if (text){
+				result = $(el).text();
+			}else if (attr){
+				result = $(el).attr(attr);
+			}else{
+				result = $.html(el);
+			}
+
+			results.push(result);
 		});
 		return results;
 	}
