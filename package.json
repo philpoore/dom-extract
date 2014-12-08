@@ -1,6 +1,6 @@
 {
   "name": "dom-extract",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "Extract HTML from file by DOM Selector",
   "main": "index.js",
   "scripts": {
