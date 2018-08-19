@@ -4,7 +4,7 @@
   "description": "Extract HTML from file by DOM Selector",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node test/jasmine/spec"
+    "test": "jasmine-node test/jasmine/spec --verbose"
   },
   "bin": {
     "dom-extract": "./bin/dom-extract"
