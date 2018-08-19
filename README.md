@@ -53,8 +53,14 @@ Bump Version
 + Added Testing
 + Update README.md
 
-##### v1.0.0 - Current
+##### v1.0.0
 + Added support for --attr option
+
+##### v1.0.3
++ Fixed bug with sticky options for extract
+
+##### v1.0.4 - Current
++ Fixed typo
 
 #### Who
 Phil Poore made this :P

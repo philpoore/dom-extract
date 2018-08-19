@@ -2,22 +2,32 @@ var fs = require('fs');
 var cheerio = require('cheerio');
 var readtoend = require('readtoend');
 
+
 var DomExtract = module.exports = function (opts){
 	
-	var text, selector, filename;
+	var text, selector, filename, extract, single, attr, trim;
 
 
 	// initalize function
 	// can be used to re-init
 	var init = function (opts){
+
 		text = opts.text || false;
 		attr = opts.attr || false;
-		selector = opts.selector;
+		single = opts.single || false;
+		trim = opts.trim || false;
+
+		if (opts.selector){
+			selector = opts.selector;
+		}else{
+			extract = opts.extract;
+		}
+		
 		filename = opts.filename;
 
 		// we need a selector
-		if (!selector){
-			throw new Error('Selector required');
+		if (!selector && !extract){
+			throw new Error('Selector or Extract required');
 		}
 	}
 
@@ -25,22 +35,69 @@ var DomExtract = module.exports = function (opts){
 	// main function to extract results from data
 	// returns results array
 	var process_data = function(data){
-		var results = [];
+		var results;
 		var $ = cheerio.load(data);
 
-		$(selector).each(function (i, el){
-			var result;
-			
-			if (text){
-				result = $(el).text();
-			}else if (attr){
-				result = $(el).attr(attr);
-			}else{
-				result = $.html(el);
-			}
+		if (selector){
+			results = [];
+			$(selector).each(function (i, el){
+				var result;
+				
+				if (text){
+					result = $(el).text();
+				}else if (attr){
+					result = $(el).attr(attr);
+				}else{
+					result = $.html(el);
+				}
 
-			results.push(result);
-		});
+				results.push(result);
+			});	
+		}else{
+			var ltext, lselector, lsingle, lattr, ltrim;
+
+			results = {};
+			for (i in extract){
+				var selector_obj = extract[i];
+
+				if (typeof selector_obj == 'string'){
+					lselector = selector_obj;
+				}else if (typeof selector_obj == 'object'){
+					lselector = typeof selector_obj.selector !== "undefined" ? selector_obj.selector : selector;
+					lattr = typeof selector_obj.attr !== "undefined" ? selector_obj.attr : attr;
+					ltext = typeof selector_obj.text !== "undefined" ? selector_obj.text : text;
+					lsingle = typeof selector_obj.single !== "undefined" ? selector_obj.single : single;
+					ltrim = typeof selector_obj.trim !== "undefined" ? selector_obj.trim : trim;
+				}
+
+				$(lselector).each(function (j, el){
+					var result;
+					
+					if (ltext){
+						result = $(el).text();
+					}else if (lattr){
+						result = $(el).attr(lattr);
+					}else{
+						result = $.html(el);
+					}
+					
+					if (ltrim){
+						result = result.trim();
+					}
+
+					if (lsingle){
+						results[i] = result;	
+					}else{
+						if (!results[i]){
+							results[i] = [];
+						}
+
+						results[i].push(result);
+					}
+				});
+			}
+		}
+		
 		return results;
 	}
 
